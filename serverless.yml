@@ -1,0 +1,46 @@
+service: spotify-server
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    SPOTIFY_CLIENT_ID: ${env:SPOTIFY_CLIENT_ID}
+    SPOTIFY_CLIENT_SECRET: ${env:SPOTIFY_CLIENT_SECRET}
+    REDIRECT_URI: ${env:REDIRECT_URI, 'http://localhost:3000/auth/callback'}
+
+plugins:
+  - serverless-typescript
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 5000
+
+functions:
+  login:
+    handler: src/handler.login
+    events:
+      - http:
+          path: auth/login
+          method: get
+          cors: true
+
+  callback:
+    handler: src/handler.callback
+    events:
+      - http:
+          path: auth/callback
+          method: get
+          cors: true
+
+  token:
+    handler: src/handler.token
+    events:
+      - http:
+          path: auth/token
+          method: get
+          cors: true 

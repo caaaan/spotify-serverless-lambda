@@ -1,0 +1,27 @@
+{
+  "name": "spotify-server",
+  "version": "1.0.0",
+  "description": "Serverless API to serve Spotify playlist songs",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serverless offline",
+    "build": "tsc",
+    "deploy": "serverless deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.136",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^20.11.24",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-offline": "^13.3.3"
+  }
+}
