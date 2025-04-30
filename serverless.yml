@@ -8,12 +8,14 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
   environment:
-    SPOTIFY_CLIENT_ID: ${env:SPOTIFY_CLIENT_ID}
-    SPOTIFY_CLIENT_SECRET: ${env:SPOTIFY_CLIENT_SECRET}
-    REDIRECT_URI: ${env:REDIRECT_URI, 'http://localhost:3000/auth/callback'}
+    SPOTIFY_CLIENT_ID: ${process.env.SPOTIFY_CLIENT_ID}
+    SPOTIFY_CLIENT_SECRET: ${process.env.SPOTIFY_CLIENT_SECRET}
+    SPOTIFY_PLAYLIST_ID: ${process.env.SPOTIFY_PLAYLIST_ID}
+    REDIRECT_URI: ${process.env.REDIRECT_URI, 'http://localhost:3000'}
 
 plugins:
-  - serverless-typescript
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
   - serverless-offline
 
 custom:

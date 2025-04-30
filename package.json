@@ -17,11 +17,13 @@
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.11.24",
     "axios": "^1.6.7",
-    "dotenv": "^16.4.5",
-    "typescript": "^5.3.3"
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "serverless": "^3.38.0",
-    "serverless-offline": "^13.3.3"
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-offline": "^13.3.3",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.8.3"
   }
 }

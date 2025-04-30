@@ -75,12 +75,18 @@ export const callback = async (event: APIGatewayProxyEvent): Promise<APIGatewayP
 
     accessToken = response.data.access_token;
 
+    // Return the token directly in the response
     return {
-      statusCode: 302,
+      statusCode: 200,
       headers: {
-        Location: '/'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
-      body: ''
+      body: JSON.stringify({
+        access_token: response.data.access_token,
+        refresh_token: response.data.refresh_token,
+        expires_in: response.data.expires_in
+      })
     };
   } catch (error) {
     console.error('Error getting access token:', error);
